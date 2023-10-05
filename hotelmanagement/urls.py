@@ -21,7 +21,8 @@ urlpatterns = [
          SpectacularSwaggerView.as_view(url_name='api-schema'),
          name='api-docs',
          ),
-    path('api/', include('building.urls')),  # Replace 'your_app' with your app's name
+    path('api/', include('building.urls')),
+    path('api/', include('user.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
