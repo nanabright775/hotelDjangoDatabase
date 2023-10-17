@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from user.models import (User, Staff, Worker, Manager,Attendee, Department)
 from django.contrib.auth import (
-    get_user_model,
     authenticate,
 )
 
@@ -12,8 +11,11 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'id',
+            'first_name',
+            'last_name',
             'username',
             'email',
+            'phone_number',
             'is_active',
             'is_staff',
             'is_manager',
@@ -21,6 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
             'is_worker',
             'groups',
             'user_permissions',
+            'password',
         ]
         read_only_fields = ['id']
         
@@ -48,42 +51,42 @@ class AuthTokenSerializer(serializers.Serializer):
     
 class StaffSerializer(serializers.ModelSerializer):
     """serializer for the staff"""
-    name = UserSerializer
+    user = UserSerializer
     
     class Meta:
         model = Staff
-        fields = ['name', 'Contact',]
+        fields = ['user', 'Contact',]
     
 class StaffDetailSerializer(serializers.ModelSerializer):
     """serializer for the staff detail"""
-    name = UserSerializer
+    user = UserSerializer
     
     class Meta:
         model = Staff
-        fields = ['name', 'Address','Contact', 'role', 'staff_id']
+        fields = ['user', 'Address', 'Contact', 'role', 'staff_id']
         read_only_fields = ['staff_id']
         
 class WorkerSerializer(serializers.ModelSerializer):
     """serializers for model worker"""
-    name = UserSerializer
+    user = UserSerializer
     class Meta:
         model = Worker
-        fields = ['name', 'Address']
+        fields = ['user', 'Address']
    
    
 class ManagerSerializer(serializers.ModelSerializer):
     """serializers for manager"""
-    name = UserSerializer
+    user = UserSerializer
     class Meta:
         model = Manager
-        fields = ['name', ]
+        fields = ['user']
     
 class ManagerDetailSerializer(serializers.ModelSerializer):
     """serializers for manager details"""
-    name = UserSerializer
+    user = UserSerializer
     class Meta:
         model = Manager
-        fields = ['name', 'Address', 'Contact']
+        fields = ['id', 'user', 'Address', 'Contact']
         read_only_fields = ['id']
    
    
@@ -97,26 +100,26 @@ class DepartmentSerializer(serializers.ModelSerializer):
         
 class WorkerDetailSerializer(serializers.ModelSerializer):
     """serializers for model worker detail"""
-    name = UserSerializer
+    user = UserSerializer
     department = DepartmentSerializer
     class Meta:
         model = Worker
-        fields = ['id','name', 'Address', 'Contact', 'role', 'department']
+        fields = ['id','user', 'Address', 'Contact', 'role', 'department']
         read_only_fields = ['id']
         
     
 class AttendeeSerializer(serializers.ModelSerializer):
     """serializers for attendees"""
-    name = UserSerializer
+    user = UserSerializer
     class Meta:
         model = Attendee
-        fields = ['name', 'phone_number']
+        fields = ['user', 'phone_number']
     
 class AttendeeDetailSerializer(serializers.ModelSerializer):
     """serializers for attendees details"""
-    name = UserSerializer
+    user = UserSerializer
     class Meta:
         model = Attendee
-        fields = ['name', 'phone_number', 'check_in_date', 'check_out_date', 'room_number', 'special_requests']
+        fields = [ 'id', 'user', 'special_requests', 'phone_number']
         read_only_fields = ['id']
         

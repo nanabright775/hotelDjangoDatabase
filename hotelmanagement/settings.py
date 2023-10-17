@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8c&!xuls-pryg767yhp(f&2(rz$pb*l1ljlc83)p%f4c_-46n*
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'user.user'
+AUTH_USER_MODEL = 'user.User'
 
 # Application definition
 
@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'user',
+    'bookroom',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,14 +134,32 @@ STATIC_ROOT = '/web/static'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 
-
-
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# REST_FRAMEWORK = {
+#     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+# }
+
+
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-SPECTACULAR_SETTINGS={
-    'COMPONENT_SPLIT_REQUEST':True,
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+SPECTACULAR_SETTINGS = {
+    'COMPONENT_SPLIT_REQUEST': True,
+}
+JAZZMIN_SETTINGS = {
+    "site_title": "Hotel Management",
+    "site_header": "Management",
+    "welcome_sign": "Welcome to Admin Management Panel",
 }

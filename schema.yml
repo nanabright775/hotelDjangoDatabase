@@ -1,0 +1,1401 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/attendee/:
+    get:
+      operationId: api_attendee_list
+      description: views for the attendee the person who will purchase the room
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Attendee'
+          description: ''
+    post:
+      operationId: api_attendee_create
+      description: views for the attendee the person who will purchase the room
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          description: No response body
+  /api/attendee/{id}/:
+    get:
+      operationId: api_attendee_retrieve
+      description: views for the attendee the person who will purchase the room
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this attendee.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: api_attendee_update
+      description: views for the attendee the person who will purchase the room
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this attendee.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: api_attendee_partial_update
+      description: views for the attendee the person who will purchase the room
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this attendee.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: api_attendee_destroy
+      description: views for the attendee the person who will purchase the room
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this attendee.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/create/:
+    post:
+      operationId: api_create_create
+      description: create a new user in the system
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/department/:
+    get:
+      operationId: api_department_list
+      description: viewset for model department
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+          description: ''
+    post:
+      operationId: api_department_create
+      description: viewset for model department
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+  /api/department/{id}/:
+    get:
+      operationId: api_department_retrieve
+      description: viewset for model department
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    put:
+      operationId: api_department_update
+      description: viewset for model department
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    patch:
+      operationId: api_department_partial_update
+      description: viewset for model department
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartmentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartmentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartmentRequest'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    delete:
+      operationId: api_department_destroy
+      description: viewset for model department
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this department.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/hotelbuilding/:
+    get:
+      operationId: api_hotelbuilding_list
+      description: viewset for hotel
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Hotel'
+          description: ''
+    post:
+      operationId: api_hotelbuilding_create
+      description: viewset for hotel
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HotelDetailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/HotelDetailRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HotelDetailRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelDetail'
+          description: ''
+  /api/hotelbuilding/{id}/:
+    get:
+      operationId: api_hotelbuilding_retrieve
+      description: viewset for hotel
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this hotel building.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelDetail'
+          description: ''
+    put:
+      operationId: api_hotelbuilding_update
+      description: viewset for hotel
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this hotel building.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HotelDetailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/HotelDetailRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HotelDetailRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelDetail'
+          description: ''
+    patch:
+      operationId: api_hotelbuilding_partial_update
+      description: viewset for hotel
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this hotel building.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedHotelDetailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedHotelDetailRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedHotelDetailRequest'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelDetail'
+          description: ''
+    delete:
+      operationId: api_hotelbuilding_destroy
+      description: viewset for hotel
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this hotel building.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/manager/:
+    get:
+      operationId: api_manager_list
+      description: viewset for manager
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Manager'
+          description: ''
+    post:
+      operationId: api_manager_create
+      description: viewset for manager
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          description: No response body
+  /api/manager/{id}/:
+    get:
+      operationId: api_manager_retrieve
+      description: viewset for manager
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this manager.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: api_manager_update
+      description: viewset for manager
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this manager.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: api_manager_partial_update
+      description: viewset for manager
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this manager.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: api_manager_destroy
+      description: viewset for manager
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this manager.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/me/:
+    get:
+      operationId: api_me_retrieve
+      description: manage authenticated user
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_me_update
+      description: manage authenticated user
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_me_partial_update
+      description: manage authenticated user
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserRequest'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/staff/:
+    get:
+      operationId: api_staff_list
+      description: api for staffs view
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+          description: ''
+    post:
+      operationId: api_staff_create
+      description: api for staffs view
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          description: No response body
+  /api/staff/{id}/:
+    get:
+      operationId: api_staff_retrieve
+      description: api for staffs view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: api_staff_update
+      description: api for staffs view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: api_staff_partial_update
+      description: api for staffs view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: api_staff_destroy
+      description: api for staffs view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/token/:
+    post:
+      operationId: api_token_create
+      description: create a new auth token for user
+      tags:
+      - api
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthTokenRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthTokenRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthTokenRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+  /api/worker/:
+    get:
+      operationId: api_worker_list
+      description: views for model views
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Worker'
+          description: ''
+    post:
+      operationId: api_worker_create
+      description: views for model views
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          description: No response body
+  /api/worker/{id}/:
+    get:
+      operationId: api_worker_retrieve
+      description: views for model views
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this worker.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: api_worker_update
+      description: views for model views
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this worker.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    patch:
+      operationId: api_worker_partial_update
+      description: views for model views
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this worker.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: api_worker_destroy
+      description: views for model views
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this worker.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Attendee:
+      type: object
+      description: serializers for attendees
+      properties:
+        user:
+          type: integer
+        phone_number:
+          type: string
+          maxLength: 15
+      required:
+      - phone_number
+      - user
+    AuthToken:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+      - email
+      - password
+    AuthTokenRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+      required:
+      - email
+      - password
+    Department:
+      type: object
+      description: serializers for department model
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+        manager:
+          type: integer
+      required:
+      - manager
+      - name
+    DepartmentRequest:
+      type: object
+      description: serializers for department model
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+        manager:
+          type: integer
+      required:
+      - manager
+      - name
+    Hotel:
+      type: object
+      description: serializer for the building
+      properties:
+        name:
+          type: string
+          maxLength: 250
+        address:
+          type: string
+        city:
+          type: string
+          maxLength: 50
+        region:
+          type: string
+          maxLength: 50
+        country:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+          nullable: true
+      required:
+      - address
+      - city
+      - country
+      - name
+      - region
+    HotelDetail:
+      type: object
+      description: serializer for the building
+      properties:
+        owner_name:
+          type: string
+          maxLength: 255
+        name:
+          type: string
+          maxLength: 250
+        address:
+          type: string
+        city:
+          type: string
+          maxLength: 50
+        region:
+          type: string
+          maxLength: 50
+        country:
+          type: string
+          maxLength: 50
+        description:
+          type: string
+          nullable: true
+        postal_code:
+          type: string
+          maxLength: 20
+        number_of_floors:
+          type: integer
+        number_of_rooms:
+          type: integer
+        has_swimming_pool:
+          type: boolean
+        has_fitness_center:
+          type: boolean
+        opening_date:
+          type: string
+          format: date
+        last_renovation_date:
+          type: string
+          format: date
+      required:
+      - address
+      - city
+      - country
+      - last_renovation_date
+      - name
+      - number_of_floors
+      - number_of_rooms
+      - opening_date
+      - owner_name
+      - postal_code
+      - region
+    HotelDetailRequest:
+      type: object
+      description: serializer for the building
+      properties:
+        owner_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        name:
+          type: string
+          minLength: 1
+          maxLength: 250
+        address:
+          type: string
+          minLength: 1
+        city:
+          type: string
+          minLength: 1
+          maxLength: 50
+        region:
+          type: string
+          minLength: 1
+          maxLength: 50
+        country:
+          type: string
+          minLength: 1
+          maxLength: 50
+        description:
+          type: string
+          nullable: true
+        postal_code:
+          type: string
+          minLength: 1
+          maxLength: 20
+        number_of_floors:
+          type: integer
+        number_of_rooms:
+          type: integer
+        has_swimming_pool:
+          type: boolean
+        has_fitness_center:
+          type: boolean
+        opening_date:
+          type: string
+          format: date
+        last_renovation_date:
+          type: string
+          format: date
+      required:
+      - address
+      - city
+      - country
+      - last_renovation_date
+      - name
+      - number_of_floors
+      - number_of_rooms
+      - opening_date
+      - owner_name
+      - postal_code
+      - region
+    Manager:
+      type: object
+      description: serializers for manager
+      properties:
+        user:
+          type: integer
+      required:
+      - user
+    PatchedDepartmentRequest:
+      type: object
+      description: serializers for department model
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+        manager:
+          type: integer
+    PatchedHotelDetailRequest:
+      type: object
+      description: serializer for the building
+      properties:
+        owner_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        name:
+          type: string
+          minLength: 1
+          maxLength: 250
+        address:
+          type: string
+          minLength: 1
+        city:
+          type: string
+          minLength: 1
+          maxLength: 50
+        region:
+          type: string
+          minLength: 1
+          maxLength: 50
+        country:
+          type: string
+          minLength: 1
+          maxLength: 50
+        description:
+          type: string
+          nullable: true
+        postal_code:
+          type: string
+          minLength: 1
+          maxLength: 20
+        number_of_floors:
+          type: integer
+        number_of_rooms:
+          type: integer
+        has_swimming_pool:
+          type: boolean
+        has_fitness_center:
+          type: boolean
+        opening_date:
+          type: string
+          format: date
+        last_renovation_date:
+          type: string
+          format: date
+    PatchedUserRequest:
+      type: object
+      description: serializers for model serializers
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        last_name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        username:
+          type: string
+          minLength: 1
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 100
+        phone_number:
+          type: string
+          minLength: 1
+          maxLength: 50
+        is_active:
+          type: boolean
+        is_staff:
+          type: boolean
+        is_manager:
+          type: boolean
+        is_attendee:
+          type: boolean
+        is_worker:
+          type: boolean
+        groups:
+          type: array
+          items:
+            type: integer
+        user_permissions:
+          type: array
+          items:
+            type: integer
+        password:
+          type: string
+          minLength: 1
+          maxLength: 128
+    Staff:
+      type: object
+      description: serializer for the staff
+      properties:
+        user:
+          type: integer
+        Contact:
+          type: integer
+      required:
+      - Contact
+      - user
+    User:
+      type: object
+      description: serializers for model serializers
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        username:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 100
+        phone_number:
+          type: string
+          maxLength: 50
+        is_active:
+          type: boolean
+        is_staff:
+          type: boolean
+        is_manager:
+          type: boolean
+        is_attendee:
+          type: boolean
+        is_worker:
+          type: boolean
+        groups:
+          type: array
+          items:
+            type: integer
+        user_permissions:
+          type: array
+          items:
+            type: integer
+        password:
+          type: string
+          maxLength: 128
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+      - password
+      - phone_number
+      - username
+    UserRequest:
+      type: object
+      description: serializers for model serializers
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        last_name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        username:
+          type: string
+          minLength: 1
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 100
+        phone_number:
+          type: string
+          minLength: 1
+          maxLength: 50
+        is_active:
+          type: boolean
+        is_staff:
+          type: boolean
+        is_manager:
+          type: boolean
+        is_attendee:
+          type: boolean
+        is_worker:
+          type: boolean
+        groups:
+          type: array
+          items:
+            type: integer
+        user_permissions:
+          type: array
+          items:
+            type: integer
+        password:
+          type: string
+          minLength: 1
+          maxLength: 128
+      required:
+      - email
+      - first_name
+      - last_name
+      - password
+      - phone_number
+      - username
+    Worker:
+      type: object
+      description: serializers for model worker
+      properties:
+        user:
+          type: integer
+        Address:
+          type: string
+      required:
+      - Address
+      - user
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
