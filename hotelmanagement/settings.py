@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'user',
     'bookroom',
+    'django_celery_beat',
+    # 'djcelery',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hotelmanagement.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -163,3 +164,28 @@ JAZZMIN_SETTINGS = {
     "site_header": "Management",
     "welcome_sign": "Welcome to Admin Management Panel",
 }
+
+# CELERY SETTINGS
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+if CELERY_RESULT_BACKEND == 'django-db':
+    INSTALLED_APPS += ['django_celery_results',]
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'GMT'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+CELERY_RESULT_DB_TABLENAMES = {
+    'task': 'your_prefix_taskmeta',
+}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'developeregyakofi@gmail.com'
+EMAIL_HOST_PASSWORD = 'thbqmlhkazmjbnkx'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

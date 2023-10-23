@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
             username=username,
             first_name=first_name,
             last_name=last_name,
-            password=password  # Added the missing comma after 'last_name'
+            password=password,  # Added the missing comma after 'last_name'
         )
         user.is_admin = True
         user.is_active = True
@@ -46,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=50, unique=True)
+    phone_number = models.CharField(max_length=50, unique=True, null=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
