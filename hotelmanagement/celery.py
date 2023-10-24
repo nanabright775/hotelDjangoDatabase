@@ -10,11 +10,11 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.conf.timezone = 'UTC'
 
-app.conf.beat_schedule = {
-    "add_first": {
-        "task": "bookroom.tasks.send_mail_func",
-        "schedule": timedelta(minutes=1),
-    },
-}
+# app.conf.beat_schedule = {
+#     "add_first": {
+#         "task": "bookroom.tasks.send_mail_func",
+#         "schedule": timedelta(days=1),
+#     },
+# }
 
 app.autodiscover_tasks()

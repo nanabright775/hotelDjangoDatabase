@@ -5,6 +5,9 @@ from django.core.mail import send_mail
 from hotelmanagement import settings
 from django.utils import timezone
 from datetime import timedelta
+from django_celery_beat.models import PeriodicTask, CrontabSchedule
+
+
 
 @shared_task(bind=True)
 def send_mail_func(self):
