@@ -1,10 +1,20 @@
 
-from django.urls import path
+from django.urls import (path, include,)
+from rest_framework.routers import DefaultRouter
 from bookroom import views
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+router = DefaultRouter()
+router.register('bookroom', views.BookRoomView)
+router.register('room', views.RoomView)
+
+app_name = 'bookroom'
 
 
 urlpatterns = [
-    # # path('', views.test, name="test"),
-    # path('sendmail/', views.send_mail_to_all, name="sendmail"),
-    # path('schedulemail/', views.schedule_mail, name="schedulemail"),
+    path('', include(router.urls)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()

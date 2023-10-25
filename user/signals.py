@@ -14,24 +14,9 @@ def notify_manager_on_user_creation(sender, instance, created, **kwargs):
             message = f'Thank you for choosing our hotel dear:{instance.first_name}',
             from_email = settings.EMAIL_HOST_USER,
             recipient_list = [to_email],
-             fail_silently=True,
+            fail_silently=True,
         )
-        # send_mail(subject, message, from_email, recipient_list)
-    
-    
-# @receiver(post_save, sender = (User, Attendee, Worker, Manager))
-# def notify_manager_on_user_creation(sender, instance, created, **kwargs):
-#     """signal to notify the the user for succeful signup """
-#     if created:
-#         mail_subject = "Hotel Management Frontdesk"
-#         message = "sign up succesfully. Thank You"
-#         to_email = instance.email
-#         send_mail(
-#             subject = mail_subject,
-#             message=message,
-#             from_email=settings.EMAIL_HOST_USER,
-#             recipient_list=[to_email],
-#             fail_silently=True,
-#         )        
+ 
 
+   
     
