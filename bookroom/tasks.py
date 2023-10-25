@@ -1,5 +1,6 @@
 from user.models import User
-from bookroom.models import BookRoom
+from bookroom.models import BookRoom, Room
+from datetime import datetime
 from celery import shared_task
 from django.core.mail import send_mail
 from hotelmanagement import settings
@@ -22,6 +23,10 @@ def send_mail_func(self, data):
         recipient_list=[to_email],
         fail_silently=True,
     )
+
+    Room.status = 'free'
+    Room.guest = ''
+        
 
     # return "Done"
 
