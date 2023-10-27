@@ -5,7 +5,7 @@ from django_celery_beat.models import PeriodicTask, ClockedSchedule
 from hotelmanagement import settings
 from django.core.mail import send_mail
 import json
-
+from datetime import datetime
 
 """signal to send message upon checking out like when the booking time is over"""
 
@@ -13,14 +13,17 @@ import json
 @receiver(post_save, sender=BookRoom)
 def schedule_checkout(sender, instance, created, **kwargs):
     if created:
+        args = (instance.user.id, instance.room.id)
+        args_json = json.dumps(args)
+        stamp = int(datetime.now().timestamp())
         schedule = ClockedSchedule.objects.create(
             clocked_time=instance.check_out_date)
         PeriodicTask.objects.create(
             clocked=schedule,
-            name=f'checkoutMessage{instance.user.id}',
+            name=f'checkoutMessage{stamp}',
             task='bookroom.tasks.send_mail_func',
             one_off=True,
-            args=json.dumps((f'{instance.user.id}',)))
+            args=args_json)
 
 
 """signal to send email to the user upon booking the room"""
