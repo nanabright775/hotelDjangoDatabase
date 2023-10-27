@@ -9,6 +9,7 @@ class Room(models.Model):
     room_number = models.PositiveIntegerField()
     capacity = models.IntegerField()
     floor_number = models.PositiveIntegerField()
+    price = models.CharField(max_length=30)
     TYPE = (
         ('executive', 'executive'),
         ('regular', 'regular')

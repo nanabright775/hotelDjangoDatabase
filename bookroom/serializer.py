@@ -7,7 +7,7 @@ class RoomSerializers(serializers.ModelSerializer):
     """serializers to handle the Rooms"""
     class Meta:
         model = Room
-        fields = ['room_number', 'floor_number']
+        fields = ['room_number', 'floor_number', 'price']
         
         
 class BookRoomSerializer(serializers.ModelSerializer):

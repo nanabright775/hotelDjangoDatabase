@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'bookroom',
     'django_celery_beat',
     'rest_framework_simplejwt',
+    'payment',
     # 'djcelery',
 ]
 
