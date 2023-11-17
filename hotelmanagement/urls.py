@@ -17,14 +17,17 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path(
         'api/docs/',
-         SpectacularSwaggerView.as_view(url_name='api-schema'),
-         name='api-docs',
-         ),
+        SpectacularSwaggerView.as_view(url_name='api-schema'),
+        name='api-docs',
+    ),
     path('api/', include('building.urls')),
     path('api/', include('user.urls')),
     path('', include('bookroom.urls')),
+    # path('', include('payment.urls')),
+    # path('', include('paypal.standard.ipn.urls')),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
-urlpatterns +=staticfiles_urlpatterns()
+urlpatterns += staticfiles_urlpatterns()

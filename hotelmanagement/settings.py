@@ -33,8 +33,10 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'rest_framework_simplejwt',
     'payment',
-    # 'djcelery',
+    # 'stripe',
+    # 'paypal.standard.ipn',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -178,3 +180,6 @@ EMAIL_HOST_USER = 'developeregyakofi@gmail.com'
 EMAIL_HOST_PASSWORD = 'thbqmlhkazmjbnkx'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+# PAYPAL_RECEIVER_EMAIL = 'developeregyakofi@gmail.com'
+# PAYPAL_TEST = True

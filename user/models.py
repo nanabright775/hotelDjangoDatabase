@@ -1,25 +1,26 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.contrib.auth.hashers import make_password
 
 
-class User(AbstractUser, PermissionsMixin):
-    """Custom user model."""
+class User(AbstractUser):
+    # """Custom user model."""
     username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(max_length=100, unique=True)
+    # email = models.EmailField(max_length=100, unique=True)
     phone_number = models.CharField(max_length=50, unique=True, null=True)
     Address = models.TextField()
     is_manager = models.BooleanField(default=False)
     is_attendee = models.BooleanField(default=False)
     is_worker = models.BooleanField(default=False)
     
-    def save(self, *args , **kwargs):
-        self.password = make_password(self.password)
-        super().save(*args, **kwargs)
+    # def save(self, *args , **kwargs):
+    #     self.password = make_password(self.password)
+    #     super().save(*args, **kwargs)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    # USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['username']
+    
 
 class Manager(models.Model):
     """models for managers"""
